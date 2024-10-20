@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Visitantes</title>
+    <style>
+        #contador {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="contador">Visitantes: 0</div>
+
+<script>
+    // Función para actualizar el contador
+    function actualizarContador() {
+        let contador = localStorage.getItem('contador');
+        if (contador) {
+            contador = parseInt(contador) + 1; // Incrementar el contador
+        } else {
+            contador = 1; // Primer visitante
+        }
+        localStorage.setItem('contador', contador); // Guardar en localStorage
+        document.getElementById('contador').innerText = 'Visitantes: ' + contador; // Mostrar el contador
+    }
+
+    // Llamar a la función al cargar la página
+    window.onload = actualizarContador;
+</script>
+
+</body>
+</html>
